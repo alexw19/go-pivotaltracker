@@ -327,6 +327,21 @@ func (service *StoryService) AddTask(projectID, storyID int, task *Task) (*http.
 	return service.client.Do(req, nil)
 }
 
+// UpdateTask will update existing tasks to mark them as complete or not
+func (service *StoryService) UpdateTask(projectID, storyID int, task *Task) (*http.Response, error) {
+	if task.Description == "" {
+		return nil, &ErrFieldNotSet{"description"}
+	}
+
+	u := fmt.Sprintf("projects/%v/stories/%v/tasks/%v", projectID, storyID, task.ID)
+	req, err := service.client.NewRequest("PUT", u, task)
+	if err != nil {
+		return nil, err
+	}
+
+	return service.client.Do(req, nil)
+}
+
 // ListOwners will show who is assigned to a story, returning a Person array.
 func (service *StoryService) ListOwners(projectID, storyID int) ([]*Person, *http.Response, error) {
 	u := fmt.Sprintf("projects/%d/stories/%d/owners", projectID, storyID)
