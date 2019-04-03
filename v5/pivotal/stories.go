@@ -63,7 +63,7 @@ type Story struct {
 	LabelIDs      []int      `json:"label_ids,omitempty"`
 	Labels        []*Label   `json:"labels,omitempty"`
 	TaskIDs       []int      `json:"task_ids,omitempty"`
-	Tasks         []int      `json:"tasks,omitempty"`
+	Tasks         []*Task    `json:"tasks,omitempty"`
 	FollowerIDs   []int      `json:"follower_ids,omitempty"`
 	CommentIDs    []int      `json:"comment_ids,omitempty"`
 	CreatedAt     *time.Time `json:"created_at,omitempty"`
@@ -86,7 +86,7 @@ type StoryRequest struct {
 	LabelIDs    *[]int    `json:"label_ids,omitempty"`
 	Labels      *[]*Label `json:"labels,omitempty"`
 	TaskIDs     *[]int    `json:"task_ids,omitempty"`
-	Tasks       *[]*Task    `json:"tasks,omitempty"`
+	Tasks       *[]*Task  `json:"tasks,omitempty"`
 	FollowerIDs *[]int    `json:"follower_ids,omitempty"`
 	CommentIDs  *[]int    `json:"comment_ids,omitempty"`
 }
